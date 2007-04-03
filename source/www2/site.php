@@ -1,6 +1,6 @@
 <?php
 //define("www2dev", "DEFINED");
-define("MAINPAGE_FILE","mainpage.php");              //首页导读的 URL
+define("MAINPAGE_FILE","mainpage.html");              //首页导读的 URL
 define("RUNNINGTIME", 1);                             //底部显示页面运行时间
 define("AUTO_BMP2PNG_THRESHOLD", 100000); // requires ImageMagick and safe_mode off
 
@@ -16,6 +16,5 @@ $style_names = array(
 );
 
 // 这个暂时这样.............
-define("BBS_NICKNAME", "水木");
-
+define("BBS_NICKNAME", "同舟共济");
 ?>
