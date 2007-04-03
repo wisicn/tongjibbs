@@ -127,10 +127,10 @@ for ($i = 0; $i < BBS_SECNUM; $i++)
 	$sec_boards_num[$i] = 0;
 }
 $t = array(); // 分区序号变换表
-for ($i = 0; $i < BBS_SECNUM - 2; $i++)
-	$t[$i] = $i + 2;
+for ($i = 0; $i < BBS_SECNUM - 1; $i++)
+	$t[$i] = $i + 1;
 $t[$i] = 0;
-$t[$i+1] = 1;
+//$t[$i+1] = 1;
 
 # shift through the array
 while($board = array_shift($boards))
