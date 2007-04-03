@@ -1,0 +1,1 @@
+./configure  --prefix=/home/bbskbs --enable-site=tongji_yizhou --with-www=/home/bbsweb --with-php=/usr/include/php4/ --with-mysql --enable-ssh
