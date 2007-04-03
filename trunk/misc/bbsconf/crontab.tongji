@@ -1,0 +1,45 @@
+# (Cron version -- $Id: crontab.SMTH,v 1.21 2006/10/04 18:58:25 atppp Exp $)
+MAILTO=bbs
+BBSHOME=/home/bbskbs
+# 解开戒网
+15 12 * * * /home/bbskbs/bin/miscd giveup
+# 定时更新推荐文章
+8,18,28,38,48,58 * * * * /home/bbskbs/bin/genhot
+# 更新版主统计
+1 0 * * * /home/bbskbs/bin/statBM any update
+# 每小时记录每版在线人数和在线人数
+#2 * * * * /home/bbskbs/bin/bonlinelog
+2 * * * * /home/bbskbs/bin/uonlinelog
+# 每天记录版面数据
+#10 0 * * * /home/bbskbs/bin/post_brdlog
+# 每小时记录在线人数用来生成图
+1,7,13,19,25,31,37,43,49,55 * * * * /home/bbskbs/bin/dayuserlog
+# 每天晚上把今天的平均在线写入allonline
+58 23 * * * /home/bbskbs/bin/alluserlog
+# 每小时 执行自动解封系统
+59 * * * * /home/bbskbs/bin/autoundeny
+# 每小时 43 分执行热门话题统计 -- 注意: 只能一小时一次, 不能再快
+43 * * * * /home/bbskbs/bin/poststat 
+# stiger:新的十大统计
+59 23 * * * rm -f /home/bbskbs/tmp/Xpost/*
+59 23 * * * rm -f /home/bbskbs/.post.X
+# 每个小时 59 分统计上站人数图
+59 * * * * /home/bbskbs/bin/static
+# 每天早上 4:33 统计各版使用状况0
+33 2 * * * /home/bbskbs/bin/usage > /dev/null
+# 每周一早上 3:33 , 将 BBS home 中超过七天的 chatlog & talklog 的档案砍掉
+#33 3 * * 1 /usr/bin/find /home/bbskbs/home/ \! -ctime 7 \( -name chat_\* -o -name talk_\* \) | xargs rm -f
+# 每天5:30更新版主上站记录	period	2000-11-12
+30 5 * * * /home/bbskbs/bin/lazybm > /home/bbskbs/0Announce/bbslists/hidestatic/lazybm
+# 每周更新各版精华区目录	period	2000-11-22
+#45 5 * * * /home/bbs/bin/buildAnnIDX.sh
+# 每隔 1 分钟转信一次		czz	2001-10-30
+* * * * * /home/bbskbs/innd/bbslink /home/bbskbs > /home/bbskbs/tmp/portnum 2>&1
+# update mainpage.php
+*/10 * * * * /usr/bin/wget -q -O /home/bbsweb/htdocs/mainpage.html http://127.0.0.1/mainpage.php
+# update newbord on mainpage.php
+1 8 * * * /home/bbskbs/bin/gennewboard > /dev/null
+# stat birthday
+01 23 * * * /home/bbskbs/bin/statguy birthday 200 >  /home/bbskbs/0Announce/bbslists/birthday
+# get national top 10 topic
+03 * * * * /home/bbskbs/bin/newsday.sh > /dev/null
