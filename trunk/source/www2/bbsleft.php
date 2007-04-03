@@ -144,7 +144,7 @@
 <script type="text/javascript" src="static/www2-main.js"></script>
 <script type="text/javascript"><!--
 	writeCssLeft();
-	top.document.title = '欢迎莅临<?php echo BBS_FULL_NAME; ?>';
+	top.document.title = '欢迎莅临<?php echo BBS_FULL_NAME; ?>-同济大学BBS-bbs.tongji.edu.cn';
 //-->
 </script>
 <script type="text/javascript" src="static/bbsleft.js"></script>
@@ -216,7 +216,7 @@
 ?>
 	</div>
 
-	<img src="images/open.gif" class="pm" alt="-"><a href="bbsfav.php?x"><script type="text/javascript">putImage('i_newsec.gif','class="sfolder"');</script>新分类讨论区</a><br />
+	<img src="images/open.gif" class="pm" alt="-"><a href="bbsfav.php?x"><script type="text/javascript">putImage('i_newsec.gif','class="sfolder"');</script>推荐版面</a><br />
 	<div><form action="bbssel.php" method="get" class="m0"><nobr
 		><img src="images/open.gif" class="pm" alt="-"><script type="text/javascript">putImage('i_search.gif','class="sfolder"');</script><input name="board" type="text" class="f2" value="搜索讨论区" size="12" onmouseover="this.focus()" onfocus="this.select()" /> 
 		<input name="submit" type="submit" value="GO" class="sgo" />
