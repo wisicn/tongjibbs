@@ -473,12 +473,13 @@ while($board = array_shift($boards))
 <script type="text/javascript">writeCssMainpage();</script>
 </head>
 <body leftmargin="5" topmargin="0" marginwidth="0" marginheight="0">
-<?php if (defined("SITE_NEWSMTH")) { ?>
-<script src="images/randomad.js" type="text/javascript"></script>
-<table><tr><td valign=top width=154><img id="bottom"  src="images/ad/1.gif" onload=notifyLoad(this.src); name=bottom></td></tr></table>
-<?php } else { ?>
-<center style="padding: 0.5em;font-weight:bold;font-size:150%;"><?php echo BBS_FULL_NAME; ?></center>
-<?php } ?>
+
+<table><tr><td valign=top width=154>
+<?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_top.html");
+?>
+</td></tr></table>
+
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
   <form action="bbssel.php">
   <tr> 
@@ -514,8 +515,22 @@ while($board = array_shift($boards))
 	gen_commend_html();
 ?>
 <br>
+<table><tr><td valign=top width=154>
+<?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_mid1.html");
+?>
+</td></tr></table>
+
 <?php
 	gen_hot_subjects_html();
+	?>
+<table><tr><td valign=top width=154>
+<?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_mid2.html");
+?>
+</td></tr></table>
+
+	<?php
 	gen_sections_html();
 ?>
 </td>
@@ -556,14 +571,37 @@ while($board = array_shift($boards))
 	//gen_system_vote_html();
 	gen_new_boards_html();
 	gen_recommend_boards_html();
-	gen_board_rank_html();
+?>
+
+<table width="100%" border="0"><tr><td><?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_right.html");
+?></td></tr></table>
+
+<?php gen_board_rank_html();
 	gen_blessing_list_html();
 ?>
 	  </td>
     <td width="10">&nbsp;</td>
   </tr>
 </table>
-<?php if (defined("SITE_NEWSMTH")) { ?>
+
+<table><tr><td valign=top width=154>
+<?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_bottom.html");
+?>
+</td></tr></table>
+
+
+<hr class="smth">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center" class="smth">版权所有 <span style="font-family: Arial,sans-serif;">&copy;</span> <?php echo BBS_FULL_NAME; ?> 1999-2007
+ <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">沪ICP备053603</a>
+  </td></tr>
+</table>
+
+
+<?php if (0 && defined("SITE_NEWSMTH")) { ?>
 <hr class="smth">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>

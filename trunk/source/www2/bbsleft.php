@@ -391,7 +391,16 @@
 	}
 ?>
 </div>
-<?php if (!defined("SITE_NEWSMTH")) { ?>
+
+<!-- add by LAOLIN BEGIN  --><div>
+<?php
+echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/bbslftmy.html");
+?></div>
+<!-- add by LAOLIN END
+ 还有下一行的 1 || ）-->
+ 
+
+<?php if (1 || !defined("SITE_NEWSMTH")) { ?>
 <p align="center">
 <a href="http://dev.kcn.cn/" target="_blank"><img src="images/poweredby.gif" border="0" alt="Powered by KBS" /></a>
 </p>
