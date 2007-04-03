@@ -423,7 +423,7 @@ replyForm.prototype.f = function() {
 		html += '<option value="-1" ' + (this.sig<0?'selected="selected"':'') + '>随机签名档</option>';
 	}
 	html += '</select> [<a target="_blank" href="bbssig.php">查看签名档</a>]';
-	if (this.ano) html += '<input type="checkbox" name="anony" value="1" />匿名';
+	if (this.ano) html += '<input type="checkbox" checked name="anony" value="1" />匿名';
 	if (this.outgo) html += '<input type="checkbox" name="outgo" value="1"' + (this.lsave?'':' checked="checked"') + '/>转信';
 	html += '<input type="checkbox" name="mailback" value="1" />re文抄送信箱';
 	if (this.pDiv) {
