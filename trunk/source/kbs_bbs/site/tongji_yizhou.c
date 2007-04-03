@@ -162,8 +162,8 @@ int multilogin_user(struct userec *user, int usernum,int mode)
     if ((!HAS_PERM(user, PERM_LOGINOK)) && logincount > 0)
         return 1;
 
-    if (((curr_login_num < 700) && (logincount >= 3))   /*小于700可以三登 */
-        ||((curr_login_num >= 700) && (logincount >= 2) /*700人以上 */
+    if (((curr_login_num < 1000) && (logincount >= 3))   /*小于1000可以三登  bye wisi */
+        ||((curr_login_num >= 1000) && (logincount >= 2) /*1000人以上 */
            &&!(((arg.telnet_count == 0) && (mode == 0)) /* telnet个数为零可以再登一个telnet */
                ||(((arg.www_count == 0) && (mode == 1))))))     /*user login limit */
         return 1;
