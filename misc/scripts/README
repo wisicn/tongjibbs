@@ -1,0 +1,2 @@
+This Script files should be put into $BBSHOME/bin/ and normally run by bbs 
+via crontab or a system v init start up script (/etc/init.d/kbs)
