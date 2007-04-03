@@ -1,0 +1,15 @@
+$Id$
+
+This is the tongjibbs project source code
+
+Note:
+These directionary contain the maintaince and modification file of TongJi BBS system from KBS
+
+misc: crontab,menu.ini,configre parameter,scripts--files to support the bbs compiling and running
+source: modified source code from KBS,the sturcure of the directionary is the same with KBS CVS Repository
+package:binary files,the snapshot of KBS source code in which the tongjibbs modification can be compiled and runing
+
+Install:
+
+get KBS source code from http://dev.kcn.cn via CVS or get the snapshot there or just extract the "package" files,then copy 
+the files in "source" to the KBS source code and refer to KBS Document or Tongjibbs.org Document to install
