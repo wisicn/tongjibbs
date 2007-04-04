@@ -279,6 +279,11 @@ void remove_shm(char *shmstr, int defaultkey, int shmsize)
 }
 
 #ifdef TONGJI
+
+int minint(int a,int b)
+{
+	return a>b?b:a;
+}
 int calexplevel(int exp){
 	if(exp<0){
 		return 0;
