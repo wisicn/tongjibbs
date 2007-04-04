@@ -213,7 +213,7 @@ int t_cmpuids(int uid, struct user_info *up)
     return (up->active && uid == up->uid);
 }
 
-#ifdef FREE
+#if defined(FREE) || defined(TONGJI)
 static char   * horoscope(month, day)
 unsigned char    month, day;
 {
@@ -377,7 +377,6 @@ int t_query(char* q_id)
 #elif defined(TONGJI)
         {
     		char horobuf[50];
-		char buf1[256];
 		int clr;
 		struct userdata udata;
 
@@ -437,7 +436,7 @@ int t_query(char* q_id)
 #elif defined(TONGJI)
         uleveltochar(permstr, lookupuser);
 	prints("信箱：[\033[1;5;32m%2s\033[m] 生命力：[\033[1;32m%d\033[m] 身份: [\033[1;31m%s\033[m]\n",
-			(check_query_mail(qry_mail_dir) == 1) ? "信" : "  ", compute_user_value(lookupuser), permstr);
+			(check_query_mail(qry_mail_dir, NULL)) ? "信" : "  ", compute_user_value(lookupuser), permstr);
 	prints("文章数：[\033[1;32m%d\033[m](\033[1;33m%s\033[m) 表现值：[\033[1;31m%s\033[m] 经验值：[%s]\n",
 			lookupuser->numposts, c_numposts(lookupuser->numposts),  c_perf(perf), c_exp(exp));
 #elif defined(ZIXIA)
