@@ -25,6 +25,7 @@ $imgLinkBoard='travel';
 <head>
 <title>同济大学BBS·同舟共济站 Tongji BBS Welcome to  bbs.tongji.edu.cn</title>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<meta name="author" content="老林(http://www.laolin.com)" />
 <link href="<?php echo $themsDir; ?>index.css" type="text/css" rel="stylesheet" />
 <script src="<?php echo $themsDir;?>index.js" type="text/javascript"></script>
 
