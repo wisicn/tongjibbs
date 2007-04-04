@@ -1,6 +1,8 @@
 <?php
 /*
 todo: 
+显示在线人数（现在是静态的假的）
+
 xhtml验证
 css 验证
 美工美化
@@ -13,7 +15,7 @@ fterm cterm下载的链接
 
 进一步模块化，规范化，做到可方便切换themes
 
- ----------- by laolin(http://www.laolin.com
+ ----------- by laolin(http://www.laolin.com)
 */
 $themsDir='index_pages/20070402-spring/';
 $imgSrc=$themsDir."spring-".(time()%8).'.jpg';
