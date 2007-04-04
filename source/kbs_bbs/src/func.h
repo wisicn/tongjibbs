@@ -13,6 +13,9 @@ extern "C" {
 	char *showuserip(struct userec *user, char *ip);
     char *c_exp(int exp);
     char *c_perf(int perf);
+#ifdef TONGJI
+    char *c_numposts(int num); 
+#endif
 	int def_list(long long XX);
 
 int query_super_filter_mmap(struct fileheader *allfh, int start, int total, int down, struct super_filter_query_arg *q_arg);
