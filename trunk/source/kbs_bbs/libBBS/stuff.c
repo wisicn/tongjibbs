@@ -278,9 +278,94 @@ void remove_shm(char *shmstr, int defaultkey, int shmsize)
     shmctl(shmid,IPC_RMID,NULL);
 }
 
+#ifdef TONGJI
+int calexplevel(int exp){
+	if(exp<0){
+		return 0;
+	}else if(exp<=1000){
+		return 0;
+	}else if(exp<=4000){
+		return 1;
+	}else if(exp<=9000){
+		return 2;
+	}else if(exp<=16000){
+		return 3;
+	}else if(exp<=25000){
+		return 4;
+	}else if(exp<=36000){
+		return 5;
+	}else if(exp<=49000){
+		return 6;
+	}else if(exp<=64000){
+		return 7;
+	}else if(exp<=81000){
+		return 8;
+	}else if(exp<=100000){
+		return 9;
+	}else{
+		return 9;
+	}
+}
+
+char *c_numposts(int num) 
+  { 
+      if(num== 0 ) 
+          return "没写文章"; 
+      if(num>0&&num<=500) 
+          return "文采一般"; 
+      if(num>500&&num<=1500) 
+          return "文采奕奕"; 
+      if(num>1500&&num<=4000) 
+           return "文坛高手"; 
+      if(num>4000&&num<=10000) 
+           return "文坛博士"; 
+      if(num>10000) 
+           return "文坛至尊"; 
+      return "未知";
+  }
+#endif
+
 char *c_exp(exp)
 int exp;
 {
+#ifdef TONGJI
+	int level=0,num=0;
+	int i;
+	const int colorcode[]={37,37,37,37,31,32,35,34,32};
+	const char expchar[]={'-','+','=','*','#','%','&','@','$'};
+	const char fullchar[]="\033[31mA\033[32mA\033[35mA\033[34mA\033[33mA\033[31mA\033[32mA\033[35mA\033[34mA\033[32mA";
+        char expbuffer[65];
+	static char retbuf[65];
+	exp=exp<0?0:exp;
+	if(exp<=100000){
+		//level=floor( sqrt(exp/1000 ) );
+		level=calexplevel(exp);
+		num=(exp-level*level*1000)/((2*level+1)*100);
+		if(level>0&&num==0){
+			num=10;
+			level--;
+		}
+		if(level<9){
+		        sprintf(expbuffer,"\033[%dm",(num==10?colorcode[level]:37));
+			for(i=5;i<num+5;i++){
+				expbuffer[i]=expchar[level];
+			}
+			expbuffer[i]='\0';
+		}else{
+			for(i=0;i<6*num;i++){
+				expbuffer[i]=fullchar[i];
+			}
+			expbuffer[i]='\0';
+		}
+		sprintf(retbuf,"\033[1m%s\033[m",expbuffer);
+	}else if(exp<200000){
+		sprintf(retbuf,"\033[31mA\033[32mA\033[35mA\033[34mA\033[33mA\033[31mA\033[32mA\033[35mA\033[34mA\033[32mA\033[m");
+	}else{
+	        sprintf(retbuf,"\033[31mG O D ~~\033[m");
+	}
+	
+	return retbuf;
+#else
     int expbase = 0;
 
     if (exp == -9999)
@@ -300,11 +385,36 @@ int exp;
     if (exp > 3000 + expbase && exp <= 5000 + expbase)
         return "本站元老";
     return "开国大老";
+#endif
 }
 
 char *c_perf(int perf)
 {
-
+#ifdef TONGJI
+    if (perf == -9999)
+        return "没等级";
+    if (perf <= 99)
+        return "潜水员";
+    if (perf > 99 && perf <= 199)
+        return "初级水手";
+    if (perf > 199 && perf <= 299)
+        return "中级水手";
+    if (perf > 299 && perf <=399 )
+        return "高级水手";
+    if (perf > 399 && perf <= 499)
+        return "超级水手";
+    if (perf > 499 && perf <= 599)
+        return "三副";
+    if (perf > 599 && perf <= 699)
+        return "二副";
+    if (perf > 699 && perf <= 799)
+        return "大副";
+    if (perf > 799 && perf <= 899)
+        return "副船长";
+    if (perf > 899 && perf <= 999)
+        return "船长";
+    return "神~~";
+#else
     if (perf == -9999)
         return "没等级";
     if (perf <= 5)
@@ -322,19 +432,42 @@ char *c_perf(int perf)
     if (perf > 140 && perf <= 200)
         return "本站支柱";
     return "神～～";
+#endif
 }
 
 int countexp(struct userec *udata)
 {
+#ifdef TONGJI
+
+    int exp;
+
+    if (!strcmp(udata->userid, "guest"))
+        return -9999;
+    exp = udata->numposts + udata->numlogins / 2 + (time(0) - udata->firstlogin) / 86400 + udata->stay / 1800;
+    return exp > 0 ? exp : 0;
+#else
     int exp;
 
     if (!strcmp(udata->userid, "guest"))
         return -9999;
     exp = udata->numposts + /*post_in_tin( udata->userid ) */ +udata->numlogins / 5 + (time(0) - udata->firstlogin) / 86400 + udata->stay / 3600;
     return exp > 0 ? exp : 0;
+#endif
 }
+
 int countperf(struct userec *udata)
 {
+#ifdef TONGJI
+    int perf;
+    int reg_days,stay_hours;
+
+    if (!strcmp(udata->userid, "guest"))
+        return -9999;
+    reg_days = (time(0) - udata->firstlogin) / 86400 + 1;
+    stay_hours=udata->stay/3600;
+    perf = minint( (reg_days*3/10),300 )+minint(stay_hours/10,200)+minint( (int)( ( ( (float)stay_hours/(float)reg_days )/( 20-30/( (float)reg_days/1000+2 ) ) )*500),500 );
+    return perf > 0 ? perf : 0;
+#else
     int perf;
     int reg_days;
 
@@ -344,6 +477,7 @@ int countperf(struct userec *udata)
     perf = ((float) (udata->numposts /*+post_in_tin( udata->userid ) */ ) / (float) udata->numlogins +
             (float) udata->numlogins / (float) reg_days) * 10;
     return perf > 0 ? perf : 0;
+#endif
 }
 
 /*
