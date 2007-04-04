@@ -1,8 +1,6 @@
 <?php
 /*
 todo: 
-显示在线人数（现在是静态的假的）
-
 xhtml验证
 css 验证
 美工美化
@@ -66,9 +64,8 @@ $imgLinkBoard='travel';
   </form>
                 
      </div><!-- mainform -->
-     
-     
-     <div id="onlineinfo">目前在线人数[568](438 WWW GUEST)
+  
+     <div id="onlineinfo">目前在线人数<?php echo '['.bbs_getonlinenumber(),']('.bbs_getwwwguestnumber().' WWW GUEST)';?>
      </div><!-- onlineinfo -->
 
      <div id="maintip">
