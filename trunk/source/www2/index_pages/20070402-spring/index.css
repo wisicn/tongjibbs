@@ -1,0 +1,102 @@
+body 
+{
+	text-align: center; 
+	font-family:verdana, tahoma, arial,"ËÎÌו";
+	margin:0 auto; 
+	padding:0;  
+	font-size:12px;
+}
+div,form,img,ul,ol,li,dl,dt,dd {border: 0;}
+table,td,tr,th{font-size:12px;}
+
+body 
+{
+	color: #222;   
+	background-color: #eee;    
+}
+a:link,  a:visited,  a:active 
+ {color: #22e; text-decoration:  none; }
+a:hover {color: #e22; text-decoration: underline; }
+
+#wrapper {
+	padding:0px 0 0 0px;
+	text-align: center; 
+	}
+	
+#container {
+	padding: 0px;
+	text-align: center; 
+	}
+	
+	
+#mainimage{
+	padding:50px 0 0 0px;
+	text-align: center; 
+	}
+#mainform{
+	padding: 10px 0 0 0px;
+	text-align: center; 
+	}
+#mainform form{
+	padding:0;margin:0;
+	}
+	/*
+	STYLE="width:80px;height:18px;font-size: 12px;color: #550000;border-color: #8A0000;border-style: solid;border-width: 1px;padding:2px;" LENGTH="10"
+	STYLE="width:80px;height:18px;font-size: 12px;color: #550000;border-color: #8A0000;border-style: solid;border-width: 1px;padding:2px;
+	*/
+#mainform  .p,
+#mainform  .u{
+  height:16px;
+  width:100px;
+  border-color:#222;
+  border-top:0px;
+  border-bottom:1px;
+  border-left:0px;
+  border-right:0px;
+  background-color:#eee;
+  }
+#mainform  .p{
+	font-size:12px;
+	font-family:fixedsys,verdana, tahoma, arial;
+	}
+#mainform input .u {
+	font-family:fixedsys,verdana, tahoma, arial;
+	font-size:12px;
+	}
+#mainform  label{
+	cursor:pointer;
+	}
+#mainform  .r{
+	cursor:pointer;
+	}
+	
+#mainform  .b{
+	cursor:pointer;
+  height:22px;
+  width:50px;
+	}
+#onlineinfo{
+	padding: 10px 0 1px 0px;
+	color:2e2;
+	text-align: center; 
+	}
+#maintip{
+  width:700px;
+	padding: 10px 0px 0px 0px;
+	text-align: left; 
+	}
+#footer {
+	padding: 12px 0 20px 0px;
+	text-align: center; 
+	}
+	
+#footer h1{
+  display:inline;
+  font-size:1px;
+  }
+
+#footer hr{
+  height:1px;
+  width:700px;
+  color:#222;
+  }
