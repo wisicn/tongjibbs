@@ -169,4 +169,5 @@ attach define
 #define COLOR_ONLINE 1 /*by wisi online color id*/
 #define OPEN_BMONLINE           1 /*by wisi open bm online for normal id*/
 #undef PERSONAL_CORP /*by wisi:force no PC */
+#define TONGJI 1 /*by wisi: Tongji specific conf*/ 
 #endif

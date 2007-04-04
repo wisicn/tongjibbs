@@ -344,7 +344,7 @@ int t_query(char* q_id)
     uinfo.destuid = tuid;
 /*    UPDATE_UTMP(destuid,uinfo);  I think it is not very importance.KCN*/
 /*    search_ulist( &uin, t_cmpuids, tuid );*/
-#if defined(FREE) || defined(ZIXIA)
+#if defined(FREE) || defined(ZIXIA) || defined(TONGJI)
 	move(0, 0);
 #else
     move(1, 0);
@@ -374,6 +374,23 @@ int t_query(char* q_id)
 		prints(buf1);
 
 	}
+#elif defined(TONGJI)
+        {
+    		char horobuf[50];
+		char buf1[256];
+		int clr;
+		struct userdata udata;
+
+		if( ! DEFINE(lookupuser, DEF_SHOWDETAILUSERDATA) || read_userdata(uident,&udata) ){
+			clr=2;
+			strcpy(horobuf," ");
+		}else{
+			clr = (udata.gender == 'F') ? 5 : 6 ;
+			sprintf(horobuf, "[\033[1;3%dm%s\033[m]", clr, horoscope(udata.birthmonth, udata.birthday) );
+		}
+	prints("%s (\033[1;33m%s\033[m) 共上站 \033[1;32m%d\033[m 次，网龄[\033[1;32m%d\033[m]天  %s",
+		lookupuser->userid, lookupuser->username,  lookupuser->numlogins, (time(0)-lookupuser->firstlogin)/86400,horobuf);
+	}	
 #else
         prints("%s (%s) 共上站 %d 次，发表过 %d 篇文章", lookupuser->userid, lookupuser->username, lookupuser->numlogins, lookupuser->numposts);
 #endif
@@ -404,6 +421,8 @@ int t_query(char* q_id)
 #if defined(FREE)
 	prints("\n上 次 在: [\033[1;32m%s\033[m] 从 [\033[1;32m%s\033[m] 到本站一游。\n", Ctime(lookupuser->lastlogin), ((lookupuser->lasthost[0] == '\0') /*|| DEFINE(getCurrentUser(),DEF_HIDEIP) */ ? "(不详)" : ( (!strcmp(lookupuser->userid , getCurrentUser()->userid) || HAS_PERM(getCurrentUser(), PERM_SYSOP) ) ? lookupuser->lasthost: SHOW_USERIP(lookupuser, lookupuser->lasthost)) ) );
 	prints("离站时间: [\033[1;32m%s\033[m] ", exittime);
+#elif defined(TONGJI)
+    prints("\n上次在  [\033[1;32m%s\033[m] 从 [\033[1;32m%s\033[m] 到本站一游。\n离线时间[\033[1;32m%s\033[m] ", Ctime(lookupuser->lastlogin), ((lookupuser->lasthost[0] == '\0') /*|| DEFINE(currentuser,DEF_HIDEIP) */ ? "(不详)" : ( (!strcmp(lookupuser->userid , getCurrentUser()->userid) || HAS_PERM(getCurrentUser(), PERM_OBOARDS) ) ? lookupuser->lasthost: SHOW_USERIP(lookupuser, lookupuser->lasthost)) ), exittime);
 #else
     prints("\n上次在  [%s] 从 [%s] 到本站一游。\n离线时间[%s] ", Ctime(lookupuser->lastlogin), ((lookupuser->lasthost[0] == '\0') /*|| DEFINE(getCurrentUser(),DEF_HIDEIP) */ ? "(不详)" : ( (!strcmp(lookupuser->userid , getCurrentUser()->userid) || HAS_PERM(getCurrentUser(), PERM_SYSOP) ) ? lookupuser->lasthost: SHOW_USERIP(lookupuser, lookupuser->lasthost)) ),    /*Haohmaru.99.12.18. hide ip */
            exittime);
@@ -415,6 +434,12 @@ int t_query(char* q_id)
 	prints("文章数: [\033[1;32m%d\033[m] 银行存款: [\033[1;32m%d元\033[m] 奖章数: [\033[1;32m%d\033[m] 生命力: [\033[1;32m%d\033[m]\n",
 	      lookupuser->numposts,lookupuser->money, lookupuser->score,
 		  compute_user_value(lookupuser) );
+#elif defined(TONGJI)
+        uleveltochar(permstr, lookupuser);
+	prints("信箱：[\033[1;5;32m%2s\033[m] 生命力：[\033[1;32m%d\033[m] 身份: [\033[1;31m%s\033[m]\n",
+			(check_query_mail(qry_mail_dir) == 1) ? "信" : "  ", compute_user_value(lookupuser), permstr);
+	prints("文章数：[\033[1;32m%d\033[m](\033[1;33m%s\033[m) 表现值：[\033[1;31m%s\033[m] 经验值：[%s]\n",
+			lookupuser->numposts, c_numposts(lookupuser->numposts),  c_perf(perf), c_exp(exp));
 #elif defined(ZIXIA)
     uleveltochar(permstr, lookupuser);
     prints(" 信箱：[\033[5m%2s\033[m]  生命力：[%d] \n",
