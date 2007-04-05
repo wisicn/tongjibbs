@@ -19,12 +19,13 @@ a:link,  a:visited,  a:active
 a:hover {color: #e22; text-decoration: underline; }
 
 #wrapper {
-	padding:0px 0 0 0px;
+	margin:0 auto;
 	text-align: center; 
 	}
 	
 #container {
-	padding: 0px;
+	margin-right: auto; 
+	margin-left: auto;
 	text-align: center; 
 	}
 	
@@ -87,7 +88,9 @@ h2.dotmark{
 	}
 #maintip{
   width:700px;
-	padding: 10px 0px 0px 0px;
+	padding-top: 10px;
+	margin-right: auto;
+	margin-left: auto; 
 	text-align: left; 
 	}
 #footer {
