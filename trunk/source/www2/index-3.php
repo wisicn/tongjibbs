@@ -1,22 +1,13 @@
 <?php
 /*
 
-说明
-(1)调用 index_pages/index.inc.php 文件
-此文件要定义2个变量,类似这样:
-$img_src="index_pages/20070402-spring/spring-".(time()%8).'.jpg';
-$link_board='travel';
-这两个变量分别表示图片文件，和链接到的版面
-
-
-(2)css js文件固定在index.php所在的目录，目前只有index-3.css，没用js
-(3)一个图片文件在images目录下(dot_blue.gif)
+说明 见 index_pages/index.inc.php 文件
 
 ======================================================
 todo: 
 
 考虑index_pages页面文件可能有错误，容错性
-
+css修改成方便改背景色的
 xhtml验证
 css 验证
 美工美化
@@ -40,9 +31,10 @@ require($index_pages."index.inc.php");
 
 function link_board($eng,$chs)
 {
+  global $index_pages;
   $burl='frames.html?mainurl=/bbsdoc.php?board=';
-  echo "<img src=\"images/dot_blue.gif\" />";
-  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a> ";
+  echo "<h2 class='dotmark'>";
+  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> ";
 }
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -51,7 +43,7 @@ function link_board($eng,$chs)
 <title>同济大学BBS·同舟共济站 Tongji BBS Welcome to  bbs.tongji.edu.cn</title>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
 <meta name="author" content="老林(http://www.laolin.com)" />
-<link href="index-3.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $index_pages ?>index-3.css" type="text/css" rel="stylesheet" />
 <!--script src="index-3.js" type="text/javascript"></script-->
 <script type="text/javascript">
 
@@ -83,7 +75,13 @@ function goboard()
   <div id="container">
   	
      <div id="mainimage">
-       <a href="/frames.html?mainurl=/bbsdoc.php?board=<?php echo $link_board;?>"><img src="<?php echo $img_src; ?>" alt="<?php echo $link_board;?> board" /></a>
+     <?php 
+     if(isset($link_to) && $link_to!='')
+       $urlto=$link_to;
+     else
+       $urlto='/frames.html?mainurl=/bbsdoc.php?board='.$link_board;
+       ?>
+       <a href="<?php echo $urlto;?>"><img src="<?php echo $img_src; ?>" alt="<?php echo $link_board;?> board" /></a>
      </div><!-- mainimage -->
      
      <div>
@@ -117,12 +115,9 @@ function goboard()
 
      <div id="maintip">
      	<b>【站长提示】：</b>
-     		<img src="images/dot_blue.gif" />
-     		推荐使用<a href="#">TELNET</a>方式上站
-     		<img src="images/dot_blue.gif" />
-     		<a href="#">TELNET上站指南</a>
-     		<img src="images/dot_blue.gif" />
-     		推荐使用<a href="#">FTerm</a> <a href="#">CTerm</a>
+     	<h2 class='dotmark'>推荐使用<a href="#">TELNET</a>方式上站</h2>
+     	<h2 class='dotmark'><a href="#">TELNET上站指南</a></h2>
+     	<h2 class='dotmark'>推荐使用<a href="#">FTerm</a> <a href="#">CTerm</a></h2>
      	<br />
      	
      	<b>【推荐链接】：</b>

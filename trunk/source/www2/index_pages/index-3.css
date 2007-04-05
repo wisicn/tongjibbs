@@ -28,7 +28,16 @@ a:hover {color: #e22; text-decoration: underline; }
 	text-align: center; 
 	}
 	
-	
+h2.dotmark{
+  display:inline;
+  line-height:12px;
+  font-size:12px;
+  font-weight:normal;
+  width:12px;
+  height:11px;
+  background: url('dot_blue.gif') left 1px no-repeat;
+  padding:0px 3px 1px 15px;
+}
 #mainimage{
 	padding:50px 0 0 0px;
 	text-align: center; 
