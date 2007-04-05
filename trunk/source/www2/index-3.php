@@ -125,7 +125,7 @@ function goboard()
      	
      	<b>【推荐链接】：</b>
 <?php
-link_board("TJExpress","同济快讯" );
+link_board("TJExpress","同济生活" );//同济快讯
 link_board("Job","求职中心" );
 link_board("Secondhand","二手市场" );
 link_board("PieBridge","鹊桥征友" );
