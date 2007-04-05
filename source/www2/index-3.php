@@ -1,6 +1,22 @@
 <?php
 /*
+
+说明
+(1)调用 index_pages/index.inc.php 文件
+此文件要定义2个变量,类似这样:
+$img_src="index_pages/20070402-spring/spring-".(time()%8).'.jpg';
+$link_board='travel';
+这两个变量分别表示图片文件，和链接到的版面
+
+
+(2)css js文件固定在index.php所在的目录，目前只有index-3.css，没用js
+(3)一个图片文件在images目录下(dot_blue.gif)
+
+======================================================
 todo: 
+
+考虑index_pages页面文件可能有错误，容错性
+
 xhtml验证
 css 验证
 美工美化
@@ -15,10 +31,19 @@ fterm cterm下载的链接
 
  ----------- by laolin(http://www.laolin.com)
 */
-$themsDir='index_pages/20070402-spring/';
-$imgSrc=$themsDir."spring-".(time()%8).'.jpg';
-$imgLinkBoard='travel';
 
+$index_pages='index_pages/';
+
+
+require("www2-funcs.php");
+require($index_pages."index.inc.php");
+
+function link_board($eng,$chs)
+{
+  $burl='frames.html?mainurl=/bbsdoc.php?board=';
+  echo "<img src=\"images/dot_blue.gif\" />";
+  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a> ";
+}
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  xml:lang="zh-CN" lang="zh-CN">
@@ -26,18 +51,39 @@ $imgLinkBoard='travel';
 <title>同济大学BBS·同舟共济站 Tongji BBS Welcome to  bbs.tongji.edu.cn</title>
 <meta http-equiv="content-type" content="text/html; charset=gb2312" />
 <meta name="author" content="老林(http://www.laolin.com)" />
-<link href="<?php echo $themsDir; ?>index.css" type="text/css" rel="stylesheet" />
-<script src="<?php echo $themsDir;?>index.js" type="text/javascript"></script>
+<link href="index-3.css" type="text/css" rel="stylesheet" />
+<!--script src="index-3.js" type="text/javascript"></script-->
+<script type="text/javascript">
 
 
+function guestlogin()
+{
+document.form1.id.value="guest";
+document.form1.submit();
+}
+function register()
+{
+top.location.href="bbsreg0.html";
+}
+        
+function dosubmit(o)
+{
+//TODO:处理wForum选择
+    return true;
+}
+function goboard()
+{
+ //TODO:处理wForum选择
+}
+</script>
+<?php if(isset($extra_head)) echo $extra_head; ?>
 </head>
-<body>
+<body  onload="document.form1.id.focus()">
 <div id="wrapper">
   <div id="container">
   	
      <div id="mainimage">
-       <a href="/frames.html?mainurl=/bbsdoc.php?board=<?php echo $imgLinkBoard;?>">
-     		 <img src="<?php echo $imgSrc; ?>" alt="<?php echo $imgLinkBoard;?> board" /></a>
+       <a href="/frames.html?mainurl=/bbsdoc.php?board=<?php echo $link_board;?>"><img src="<?php echo $img_src; ?>" alt="<?php echo $link_board;?> board" /></a>
      </div><!-- mainimage -->
      
      <div>
@@ -61,7 +107,7 @@ $imgLinkBoard='travel';
 	  <input type="button" name="guest" id="guest" value="匿名"  class="b"
 	  onclick="guestlogin()" /> 
 	  <input type="button" name="submit2" value="注册" class="b"
-	   onclick="javascript:window.location='/bbsreg1.html'" />
+	    onclick="register()" />
   </form>
                 
      </div><!-- mainform -->
@@ -71,37 +117,30 @@ $imgLinkBoard='travel';
 
      <div id="maintip">
      	<b>【站长提示】：</b>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
+     		<img src="images/dot_blue.gif" />
      		推荐使用<a href="#">TELNET</a>方式上站
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
+     		<img src="images/dot_blue.gif" />
      		<a href="#">TELNET上站指南</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
+     		<img src="images/dot_blue.gif" />
      		推荐使用<a href="#">FTerm</a> <a href="#">CTerm</a>
      	<br />
      	
      	<b>【推荐链接】：</b>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#" onclick="return goboard('');">同济快讯</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">求职中心</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">二手市场</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">鹊桥征友</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">贴图</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">电脑医院</a>
-     		<img src="<?php echo $themsDir ?>dot_blue.gif" />
-     		<a href="#"  onclick="return goboard('');">本科生之家</a>
-     	
-     	
+<?php
+link_board("TJExpress","同济快讯" );
+link_board("Job","求职中心" );
+link_board("Secondhand","二手市场" );
+link_board("PieBridge","鹊桥征友" );
+link_board("Picture","贴图" );
+link_board("ComputerTech","电脑医院" );
+link_board("Undergraduate","本科生之家" );
+?>
      	
      </div><!-- maintip -->
      
      <div id="footer">
 <hr/>
-&copy1999-2007 同济大学BBS 同舟共济站 TongjiBBS,
+&copy;1999-2007 同济大学BBS 同舟共济站 TongjiBBS,
 All Rights Reserved<h1><a href="http://www.laolin.com" title="author:Laolin" target="_blank">A</a></h1>
 <a onclick="" href="#" title="bbs AT mail dot tongji dot edu dot cn">::联系站务::</a>
 <a title="同舟共济BBS" onclick="window.external.addFavorite('http://bbs.tongji.edu.cn','同济大学BBS 同舟共济站');return false" href="#">::加入收藏::</a>
