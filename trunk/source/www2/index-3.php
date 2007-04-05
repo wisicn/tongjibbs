@@ -144,7 +144,7 @@ All Rights Reserved<h1><a href="http://www.laolin.com" title="author:Laolin" tar
 <a title="同舟共济BBS" onclick="window.external.addFavorite('http://bbs.tongji.edu.cn','同济大学BBS 同舟共济站');return false" href="#">::加入收藏::</a>
 
 
- <a href="http://www.miibeian.gov.cn" target="_blank">沪ICP备05013949号</a>
+ <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">沪ICP备05013949号</a>
      </div><!-- footer -->
      
      
