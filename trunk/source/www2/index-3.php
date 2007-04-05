@@ -9,7 +9,7 @@ todo:
 考虑index_pages页面文件可能有错误，容错性
 css修改成方便改背景色的
 xhtml验证
-css 验证
+done (W3C CSS 校验通过)css 验证
 美工美化
 telnet教程的链接
 fterm cterm下载的链接
@@ -34,7 +34,7 @@ function link_board($eng,$chs)
   global $index_pages;
   $burl='frames.html?mainurl=/bbsdoc.php?board=';
   echo "<h2 class='dotmark'>";
-  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> ";
+  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> \n";
 }
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -75,6 +75,8 @@ function goboard()
   <div id="container">
   	
      <div id="mainimage">
+     <!--在图片前后加个高350的div，使得图片未下载时，高度位置先空着 -->
+     <div style="float:left;height:350px;width:1px;" /></div>
      <?php 
      if(isset($link_to) && $link_to!='')
        $urlto=$link_to;
@@ -82,6 +84,7 @@ function goboard()
        $urlto='/frames.html?mainurl=/bbsdoc.php?board='.$link_board;
        ?>
        <a href="<?php echo $urlto;?>"><img src="<?php echo $img_src; ?>" alt="<?php echo $link_board;?> board" /></a>
+     <div style="clear:both;"></div>
      </div><!-- mainimage -->
      
      <div>
@@ -146,7 +149,7 @@ All Rights Reserved<h1><a href="http://www.laolin.com" title="author:Laolin" tar
      
      
 		
-	</div><!-- container -->
-</div><!-- wrapper -->
+  </div><!-- container -->
+</div><!-- end of wrapper -->
 </body>
 </html>
