@@ -40,10 +40,6 @@ a:hover {color: #e22; text-decoration: underline; }
 #mainform form{
 	padding:0;margin:0;
 	}
-	/*
-	STYLE="width:80px;height:18px;font-size: 12px;color: #550000;border-color: #8A0000;border-style: solid;border-width: 1px;padding:2px;" LENGTH="10"
-	STYLE="width:80px;height:18px;font-size: 12px;color: #550000;border-color: #8A0000;border-style: solid;border-width: 1px;padding:2px;
-	*/
 #mainform  .p,
 #mainform  .u{
   height:16px;
@@ -57,9 +53,9 @@ a:hover {color: #e22; text-decoration: underline; }
   }
 #mainform  .p{
 	font-size:12px;
-	font-family:fixedsys,verdana, tahoma, arial;
+	font-family:verdana, tahoma, arial;
 	}
-#mainform input .u {
+#mainform  .u {
 	font-family:fixedsys,verdana, tahoma, arial;
 	font-size:12px;
 	}
@@ -77,7 +73,7 @@ a:hover {color: #e22; text-decoration: underline; }
 	}
 #onlineinfo{
 	padding: 10px 0 1px 0px;
-	color:2e2;
+	color:#2a2;
 	text-align: center; 
 	}
 #maintip{
