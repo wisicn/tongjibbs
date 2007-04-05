@@ -5,5 +5,5 @@ bbs_wwwlogoff();
 cache_header("nocache");
 delete_all_cookie();
 
-header("Location: ./");
+header("Location: index.html");
 ?>
