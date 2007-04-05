@@ -15,3 +15,4 @@ Disallow: /bbsparm.php
 Disallow: /bbsnick.php
 Disallow: /bbsfall.php
 Disallow: /bbssfav.php
+Disallow: /jscon.php
