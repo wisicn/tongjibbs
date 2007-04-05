@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /bbspst.php
+Disallow: /bbsfav.php
+Disallow: /bbsbfind.php
+Disallow: /bbsshowvote.php
+Disallow: /bbsmailbox.php
+Disallow: /bbsfriend.php
+Disallow: /bbsmsg.php
+Disallow: /bbssendmsg.php
+Disallow: /bbsinfo.php
+Disallow: /bbsplan.php
+Disallow: /bbssig.php
+Disallow: /bbspwd.php
+Disallow: /bbsparm.php
+Disallow: /bbsnick.php
+Disallow: /bbsfall.php
+Disallow: /bbssfav.php
