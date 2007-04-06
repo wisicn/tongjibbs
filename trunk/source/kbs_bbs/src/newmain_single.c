@@ -1252,7 +1252,11 @@ void update_endline()
             num_alcounter();
 	    /*by wisi: count all user number include www guest*/
             sprintf(stitle,"\033[1;4%dm\033[33m时间[\033[36m%12.12s\033[33m] 总人数/好友[%3d/%3d][%c：%c] 使用者%s",colour,
+#ifdef TONGJI		    
                     ctime(&now)+4,get_utmp_number() + getwwwguestcount(),count_friends,(uinfo.pager&ALL_PAGER)?'Y':'N',(!(uinfo.pager&FRIEND_PAGER))?'N':'Y',buf);
+#else
+                    ctime(&now)+4,count_users,count_friends,(uinfo.pager&ALL_PAGER)?'Y':'N',(!(uinfo.pager&FRIEND_PAGER))?'N':'Y',buf);
+#endif //TONGJI		    
 #else
 	if (DEFINE(getCurrentUser(),DEF_HIGHCOLOR))
         sprintf(stitle, "\x1b[1;4%dm\x1b[33m时间[\x1b[36m%12.12s\x1b[33m] 总人数 [ %3d ] [%c：%c] 使用者%s", colour,

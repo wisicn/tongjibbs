@@ -265,8 +265,11 @@ char *ModeType(mode)
     case VOTING:
         return "投票";
     case BBSNET:
-        //return "系统维护"; //ft
-        return "穿梭银河";
+#ifdef TONGJI    
+        return"穿梭银河";
+#else
+        return "系统维护"; //ft
+#endif	
 //    case EDITWELC:
 //        return "编辑 Welc";
     case EDITUFILE:
