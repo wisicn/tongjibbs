@@ -54,20 +54,17 @@ h2.dotmark{
 #mainform  .u{
   height:16px;
   width:100px;
-  border-color:#222;
-  border-top:0px;
-  border-bottom:1px;
-  border-left:0px;
-  border-right:0px;
+  border-top:0px solid #222;
+  border-bottom:1px solid #222;
+  border-left:0px solid #222;
+  border-right:0px solid #222;
   background-color:#eee;
   }
 #mainform  .p{
-	font-size:12px;
 	font-family:verdana, tahoma, arial;
 	}
 #mainform  .u {
 	font-family:fixedsys,verdana, tahoma, arial;
-	font-size:12px;
 	}
 #mainform  label{
 	cursor:pointer;
@@ -81,6 +78,17 @@ h2.dotmark{
   height:22px;
   width:50px;
 	}
+#errorinfo{
+  width:700px;
+  margin-top:10px;
+	margin-bottom:10px;
+	padding:3px;
+	margin-right: auto;
+	margin-left: auto;
+	border:2px solid #c80;
+	background: #ff0;
+	display:none;
+}
 #onlineinfo{
 	padding: 10px 0 1px 0px;
 	color:#2a2;
@@ -108,3 +116,11 @@ h2.dotmark{
   width:700px;
   color:#222;
   }
+
+.cbox{
+  width:700px;
+	padding-top: 10px;
+	margin-right: auto;
+	margin-left: auto; 
+	text-align: center; 
+	}
