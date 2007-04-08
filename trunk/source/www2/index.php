@@ -32,7 +32,7 @@ function link_board($eng,$chs)
 {
   //TODO:自动读取中文版名
   global $index_pages;
-  $burl='frames.html?mainurl=/bbsdoc.php?board=';//理论上讲这个只是显示来看看的，和给爬虫进来用的，实际是goboard函数控制地址的
+  $burl='frames.html?mainurl=/bbsdoc.php%3Fboard=';//理论上讲这个只是显示来看看的，和给爬虫进来用的，实际是goboard函数控制地址的
   //'wForum/frames.php?target=board.php%3Fname=';
   $ret= "<h2 class='dotmark'>";
   $ret.= "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> \n";
@@ -63,7 +63,7 @@ require($index_pages."index.inc.php");
      if(isset($link_to) && $link_to!='')
        $urlto=$link_to;
      else
-       $urlto='/frames.html?mainurl=/bbsdoc.php?board='.$link_board;
+       $urlto='/frames.html?mainurl=/bbsdoc.php%3Fboard='.$link_board;
        ?>
        <a href="<?php echo $urlto;?>"
        <?php if(!isset($link_to) || $link_to=='')echo "onclick=\"return goboard('{$link_board}')\"";?>

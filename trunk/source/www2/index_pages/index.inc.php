@@ -1,10 +1,10 @@
 <?php
-if(time()%3==0)
+if(false && time()%3==0)
 {
 $img_src='http://news.tongji.edu.cn/UploadFile/IMG_7544.JPG';
 $link_tip='中银同济认同卡的办理 
 (photo copy from news.tongji.edu.cn)';
-$link_to='http://bbs.tongji.edu.cn/bbscon.php?bid=19&id=47199';
+$link_to='frames.html?mainurl=bbscon.php?bid=19&id=47199';
 }
 else
 {
