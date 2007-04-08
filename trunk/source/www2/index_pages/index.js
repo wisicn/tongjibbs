@@ -1,6 +1,7 @@
 function guestlogin()
 {
 document.form1.id.value="guest";
+document.form1.passwd.value="guest";
 before_submit();
 document.form1.submit();
 }
@@ -30,17 +31,19 @@ function before_submit()
   if(u_id=='')
   {
     haserror=true;
-    einfo+='<br/>请输入用户名';
+    einfo+='<br/>　请输入用户名';
   }
   if(u_passwd=='')
   {
     haserror=true;
-    einfo+='<br/>请输入密码';
+    einfo+='<br/>　请输入密码';
   }
   if(haserror)
   {
     ediv=document.getElementById('errorinfo');
-    ediv.innerHTML='错误信息:<b>'+einfo+'</b>';
+    ediv.innerHTML="<div style=\"float:right;\"><a href=\"#\" title=\"hide\" onclick=\"toggle_hide_id('errorinfo');return false;\">"
+      +"隐藏</a></div>"
+      +'错误信息:<b>'+einfo+'</b>';
     ediv.style.display='block';
     return false;
   }
@@ -53,6 +56,12 @@ function before_submit()
   return true;
 }
 
+function toggle_hide_id(i)
+{
+  var o=document.getElementById(i);
+  if(o.style.display=='none') o.style.display='';
+  else o.style.display='none';
+}
 /* ==================================================
 根据web/wForum选择自动进入不同界面的版面
 

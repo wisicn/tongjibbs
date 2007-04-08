@@ -34,8 +34,9 @@ function link_board($eng,$chs)
   global $index_pages;
   $burl='frames.html?mainurl=/bbsdoc.php?board=';//理论上讲这个只是显示来看看的，和给爬虫进来用的，实际是goboard函数控制地址的
   //'wForum/frames.php?target=board.php%3Fname=';
-  echo "<h2 class='dotmark'>";
-  echo "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> \n";
+  $ret= "<h2 class='dotmark'>";
+  $ret.= "<a href=\"{$burl}$eng\" onclick=\"return goboard('$eng');\">$chs</a></h2> \n";
+  return $ret;
 }
 
 require($index_pages."index.inc.php");
@@ -102,21 +103,11 @@ require($index_pages."index.inc.php");
      </div><!-- onlineinfo -->
 
      <div id="maintip">
-     	<b>【站长提示】：</b>
-     	<h2 class='dotmark'>推荐使用<a href="#">TELNET</a>方式上站</h2>
-     	<h2 class='dotmark'><a href="#">TELNET上站指南</a></h2>
-     	<h2 class='dotmark'>推荐使用<a href="#">FTerm</a> <a href="#">CTerm</a></h2>
-     	<br />
-     	
-     	<b>【推荐链接】：</b>
-<?php
-link_board("TJExpress","同济生活" );//同济快讯
-link_board("Job","求职中心" );
-link_board("Secondhand","二手市场" );
-link_board("PieBridge","鹊桥征友" );
-link_board("Picture","贴图" );
-link_board("ComputerTech","电脑医院" );
-link_board("Undergraduate","本科生之家" );
+<?php 
+foreach($page_tips as $key=>$val)
+{
+echo "<div><b>{$key} : </b>$val</div>";
+}
 ?>
      	
      </div><!-- maintip -->
