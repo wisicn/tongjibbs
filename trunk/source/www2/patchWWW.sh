@@ -7,12 +7,12 @@
 #### Start of system configuration section. ####
 
 # Directioary for KBS kbs_bbs, note: Don't use a "/" in the end
-KBS_BBS_SRCDIR="/some/patch/to/kbs_bbs/patch/like/kbs_bbs"
+WWW2_SRCDIR="/some/patch/to/kbs/www2/or/apache/wwwroot/htdocs"
 
 # pathfile's name
 PATCH_FILENAME="patch_tongji"
 
-PATCH_FILEFULLNAME="$KBS_BBS_SRCDIR/$PATCH_FILENAME"
+PATCH_FILEFULLNAME="$WWW2_SRCDIR/$PATCH_FILENAME"
 # Programs used by this script:
 CD="cd"
 RM="rm -f"
@@ -22,28 +22,30 @@ PATCH_PROGRAM="patch"
 # Options used by Programs
 
 # this option ignore the files in .svn and Makefile itself
-DIFF_OPTION="-aur --unidirectional-new-file -x .svn -x $PATCH_FILENAME -x patchKBS.sh"
-#patch it in KBS_BBS_SRCDIR
+DIFF_OPTION="-aur --unidirectional-new-file -x .svn -x tongjimy -x index.php -x favicon.ico -x index_pages -x $PATCH_FILENAME -x patchWWW.sh"
+#patch it in WWW2_SRCDIR
 PATCH_OPTION="-p0"
 
 #### End of system configuration section. ####
 case "$1" in
   showpatch)
-	$DIFF_PROGRAM $DIFF_OPTION $KBS_BBS_SRCDIR/ ./
+	$DIFF_PROGRAM $DIFF_OPTION $WWW2_SRCDIR/ ./
 	;;
 
   genpatch)
-	$DIFF_PROGRAM $DIFF_OPTION $KBS_BBS_SRCDIR/ ./ > $PATCH_FILEFULLNAME
+	$DIFF_PROGRAM $DIFF_OPTION $WWW2_SRCDIR/ ./ > $PATCH_FILEFULLNAME
 	echo "patch has been generated in $PATCH_FILEFULLNAME"
 	;;
 
   applypatch)
-	$DIFF_PROGRAM $DIFF_OPTION $KBS_BBS_SRCDIR/ ./ > $PATCH_FILEFULLNAME
+	$DIFF_PROGRAM $DIFF_OPTION $WWW2_SRCDIR/ ./ > $PATCH_FILEFULLNAME
 	echo "patch has been generated in $PATCH_FILEFULLNAME"
 	echo "==================================================="
-	$CD $KBS_BBS_SRCDIR;$PATCH_PROGRAM $PATCH_OPTION < $PATCH_FILEFULLNAME
+	$CD $WWW2_SRCDIR;$PATCH_PROGRAM $PATCH_OPTION < $PATCH_FILEFULLNAME
+	echo "!!!Please DO check the patched file carefully!!!"
 	echo "==================================================="
-	echo "!!!Please DO check the patched file before compile!!!"
+	echo "index.php and all files in index_pages have been ignored"
+	echo "please update index.php manually with great caution!"
 	;;
 
   clearpatch)
