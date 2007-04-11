@@ -474,7 +474,7 @@ while($board = array_shift($boards))
 </head>
 <body leftmargin="5" topmargin="0" marginwidth="0" marginheight="0">
 
-<table><tr><td valign=top width=154>
+<table  border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="100%">
 <?php
 echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_top.html");
 ?>
@@ -515,7 +515,7 @@ echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_top.html");
 	gen_commend_html();
 ?>
 <br>
-<table><tr><td valign=top width=154>
+<table  border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="100%">
 <?php
 echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_mid1.html");
 ?>
@@ -524,7 +524,7 @@ echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_mid1.html");
 <?php
 	gen_hot_subjects_html();
 	?>
-<table><tr><td valign=top width=154>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="100%">
 <?php
 echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_mid2.html");
 ?>
@@ -585,7 +585,7 @@ echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_right.html");
   </tr>
 </table>
 
-<table><tr><td valign=top width=154>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="100%">
 <?php
 echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_bottom.html");
 ?>
@@ -596,7 +596,7 @@ echo @file_get_contents(dirname(__FILE__)."/".  "tongjimy/mainpage_bottom.html")
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="center" class="smth">版权所有 <span style="font-family: Arial,sans-serif;">&copy;</span> <?php echo BBS_FULL_NAME; ?> 1999-2007
- <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">沪ICP备053603</a>
+ <a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">沪ICP备05013949</a>
   </td></tr>
 </table>
 
